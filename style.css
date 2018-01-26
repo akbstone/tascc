@@ -55,16 +55,36 @@ a,
 }
 
 
+p.caption{
+	font-size:20px;
+	line-height:1.5em;
+}
 
 
 
 
-.highlight-bg-1,
-.highlight-bg-2{
+
+.entry-content .highlight-bg-1,
+.entry-content .highlight-bg-2,
+.entry-content .tascc-promos{
 	margin-left:-60px;
 	margin-right:-60px;
 }
 
+
+.tascc-promos{
+	background-color:#e5ebea;
+	padding:80px;
+}
+
+.tascc-promos .promo{
+	margin-bottom:30px;
+}
+
+.tascc-promos .promo .inner{
+	background:#FFF;
+	padding:20px;
+}
 
 
 .content-area{
