@@ -48,6 +48,85 @@ if(!function_exists('tascc_init')){
 
         add_post_type_support('page','excerpt');
 
+
+        if(function_exists("register_field_group"))
+        {
+            register_field_group(array (
+                'id' => 'acf_entry-title',
+                'title' => 'Entry title',
+                'fields' => array (
+                    array (
+                        'key' => 'field_5a5661960a841',
+                        'label' => 'Featured heading',
+                        'name' => 'feature_title',
+                        'type' => 'text',
+                        'instructions' => 'This will only appear if a featured image is attached.',
+                        'default_value' => '',
+                        'placeholder' => '',
+                        'prepend' => '',
+                        'append' => '',
+                        'formatting' => 'html',
+                        'maxlength' => '',
+                    ),
+                ),
+                'location' => array (
+                    array (
+                        array (
+                            'param' => 'post_type',
+                            'operator' => '==',
+                            'value' => 'page',
+                            'order_no' => 0,
+                            'group_no' => 0,
+                        ),
+                    ),
+                ),
+                'options' => array (
+                    'position' => 'acf_after_title',
+                    'layout' => 'no_box',
+                    'hide_on_screen' => array (
+                    ),
+                ),
+                'menu_order' => 0,
+            ));
+            register_field_group(array (
+                'id' => 'acf_position',
+                'title' => 'Position',
+                'fields' => array (
+                    array (
+                        'key' => 'field_5a6ac21604187',
+                        'label' => 'Position',
+                        'name' => 'commission-member-position',
+                        'type' => 'text',
+                        'default_value' => '',
+                        'placeholder' => 'Enter member position here',
+                        'prepend' => '',
+                        'append' => '',
+                        'formatting' => 'html',
+                        'maxlength' => '',
+                    ),
+                ),
+                'location' => array (
+                    array (
+                        array (
+                            'param' => 'post_type',
+                            'operator' => '==',
+                            'value' => 'commission',
+                            'order_no' => 0,
+                            'group_no' => 0,
+                        ),
+                    ),
+                ),
+                'options' => array (
+                    'position' => 'acf_after_title',
+                    'layout' => 'no_box',
+                    'hide_on_screen' => array (
+                    ),
+                ),
+                'menu_order' => 0,
+            ));
+        }
+
+
     }
 
 }
@@ -133,6 +212,61 @@ if(!function_exists('tascc_donate_bar')){
     }
 }
 
+add_shortcode('tascc-commission-list','get_tascc_commission_list');
+if(!function_exists('get_tascc_commission_list')){
+    function get_tascc_commission_list($attr){
+        $args = array(
+          'post_type'   => 'commission'
+        );
+        
+        $out = array();
+        $all = get_posts( $args );
+        foreach($all as $k=>$p){
+            $c = array();
+            $url = get_permalink($p->ID);
+            $title = $p->post_title;
+            $position = get_post_custom_values('commission-member-position',$p->ID);
+            if(!empty($position)){
+                $title .= '<br /><em>' . $position[0] . '</em>';
+            }
+
+            $cats = get_the_category($p->ID);
+            $cats_out = array();
+            if(!empty($cats)){
+                foreach($cats as $key=>$cat){
+                    array_push($cats_out,'<div class="commission-region"><a href="' . get_term_link($cat) . '">'. $cat->name . '</a></div>');
+                }
+            }
+
+            $thumb = get_the_post_thumbnail($p->ID,'large',array( 'class'  => 'mw-100' ));
+            if(!empty($thumb)){
+                array_push($c,'<a href="'. $url .'">' . $thumb . '</a>');
+            }
+            if(!empty($title)){
+                 array_push($c,'<div class="commission-title"><a href="'. $url .'">' . $title . '</a></div>');
+            }
+
+            if(!empty($cats_out)){
+                 array_push($c,implode($cats_out,"\n"));
+            }
+
+            if(!empty($c)){
+                array_push($out,implode($c,"\n"));
+            }
+
+
+        }
+
+        $content = '';
+        if(!empty($out)){
+
+            $content = '<div class="tascc-commission-list clearfix"><div class="commission-content">' . join('</div><div class="commission-content">',$out) . '</div>';
+        }
+
+        return $content;
+    }
+}
+
 
 if(!function_exists('tascc_custom_header_title')){
     function tascc_custom_header_title() {
@@ -156,7 +290,7 @@ if(!function_exists('get_tascc_promos')){
         $out = array();
         foreach($pages as $page_id){
             $p = get_post($page_id);
-            $exc = $p->post_excerpt;
+            $exc = !empty($p->post_excerpt) ? $p->post_excerpt : wp_trim_words($p->post_content);
             $thumb = get_the_post_thumbnail($p->ID,'large',array( 'class'  => 'mw-100' ));
             $url = get_permalink($p->ID);
 

@@ -44,18 +44,4 @@
 
 	</header><!-- #masthead -->
 
-	<?php
 
-	/*
-	 * If a regular post or page, and not the front page, show the featured image.
-	 * Using get_queried_object_id() here since the $post global may not be set before a call to the_post().
-	 */
-	if ( ( is_single() || ( is_page() ) ) && has_post_thumbnail( get_queried_object_id() ) ) :
-		echo '<div class="featured-image-header mw-100">';
-		echo get_the_post_thumbnail( get_queried_object_id(), 'tascc-featured-image',array('class'=>'mw-100') );
-		echo tascc_custom_header_title();
-		echo '</div><!-- .single-featured-image-header -->';
-	endif;
-
-	echo tascc_donate_bar();
-	?>

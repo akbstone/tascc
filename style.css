@@ -46,6 +46,10 @@ a,
 	margin:20px auto;
 }
 
+header.entry-header {
+    padding: 35px 0px 10px 0px;
+}
+
 @media(max-width: 768px){
 	.alignright,
 	.alignleft{
@@ -67,8 +71,7 @@ p.caption{
 .entry-content .highlight-bg-1,
 .entry-content .highlight-bg-2,
 .entry-content .tascc-promos{
-	margin-left:-60px;
-	margin-right:-60px;
+	margin:50px -80px;
 }
 
 
@@ -88,7 +91,7 @@ p.caption{
 
 
 .content-area{
-	padding:20px 60px;
+	padding:40px 80px;
 }
 
 .mw-100{
@@ -184,6 +187,12 @@ p.caption{
 	    text-shadow:2px 0px 4px #333
 	}
 
+
+	.featured-image-commission {
+		margin-top:40px;
+		margin-bottom:70px;
+	}
+
 /** HEADER **/
 
 	.donate,
@@ -233,6 +242,40 @@ p.caption{
 	}
 
 /** COMING EVENT **/
+
+
+/**  COMMISSION CONTENT  **/
+
+	.commission-content h1{
+	    margin-bottom:0px;
+	}
+
+	.commission-content h1 em{
+	    font-weight:normal;
+	    color:#000;
+	    font-size:24px;
+	}
+
+	.commission-content .commission-region a{
+	    color:#6cbd45;
+	    font-weight:bold;
+	    font-size:18px;
+	}
+
+	.tascc-commission-list .commission-content{
+	    width:190px;
+	    float:left;
+	    margin:40px;
+	}
+
+
+
+
+	.tascc-commission-list .commission-content .commission-title a{
+		color:#000;
+	}
+
+/**  COMMISSION CONTENT  **/
 
 /** FOOTER **/
 	

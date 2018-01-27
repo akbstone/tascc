@@ -17,51 +17,43 @@
 
 get_header(); ?>
 
+	<?php
 
-<div class="container">
-	<header class="page-header">
-		<h1 class="page-title"><?php single_post_title(); ?></h1>
-	</header>
-	<?php if ( is_home() && !is_front_page() ) : ?>
-		<header class="page-header">
-			<h1 class="page-title"><?php single_post_title(); ?></h1>
-		</header>
-	<?php else : ?>
-	<header class="page-header">
-		<h2 class="page-title"><?php _e( 'Posts', 'twentyseventeen' ); ?></h2>
-	</header>
-	<?php endif; ?>
+	/*
+	 * If a regular post or page, and not the front page, show the featured image.
+	 * Using get_queried_object_id() here since the $post global may not be set before a call to the_post().
+	 */
+	if ( ( is_single() || ( is_page() ) ) && has_post_thumbnail( get_queried_object_id() ) ) :
+		echo '<div class="featured-image-header mw-100">';
+		echo get_the_post_thumbnail( get_queried_object_id(), 'tascc-featured-image',array('class'=>'mw-100') );
+		echo tascc_custom_header_title();
+		echo '</div><!-- .single-featured-image-header -->';
+	endif;
 
+	echo tascc_donate_bar();
+	?>
+
+
+
+<div class="wrap">
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
 			<?php
-			if ( have_posts() ) :
+			while ( have_posts() ) : the_post();
 
-				/* Start the Loop */
-				while ( have_posts() ) : the_post();
+				get_template_part( 'template-parts/page/content', 'page' );
 
-					/*
-					 * Include the Post-Format-specific template for the content.
-					 * If you want to override this in a child theme, then include a file
-					 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-					 */
-					get_template_part( 'template-parts/post/content', get_post_format() );
+				// If comments are open or we have at least one comment, load up the comment template.
+				if ( comments_open() || get_comments_number() ) :
+					comments_template();
+				endif;
 
-				endwhile;
-
-				
-
-			else :
-
-				get_template_part( 'template-parts/post/content', 'none' );
-
-			endif;
+			endwhile; // End of the loop.
 			?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
-	<?php get_sidebar(); ?>
 </div><!-- .wrap -->
 
 <?php get_footer();
