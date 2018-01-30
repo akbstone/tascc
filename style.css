@@ -75,6 +75,8 @@ p.caption{
 }
 
 
+
+
 .tascc-promos{
 	background-color:#e5ebea;
 	padding:80px;
@@ -94,9 +96,46 @@ p.caption{
 	padding:40px 80px;
 }
 
+
+
 .mw-100{
 	height:auto;
 }
+
+
+@media(max-width:991px){
+	.content-area{
+		padding:30px 30px!important;
+	}
+
+	.entry-content .highlight-bg-1,
+	.entry-content .highlight-bg-2,
+	.entry-content .tascc-promos{
+		margin:30px -30px;		
+	}
+
+	.tascc-promos{
+		padding:20px;
+	}
+}
+
+
+@media(max-width:768px){
+	.content-area{
+		padding:20px 20px!important;
+	}
+
+	.entry-content .highlight-bg-1,
+	.entry-content .highlight-bg-2,
+	.entry-content .tascc-promos{
+		margin:20px -20px;		
+	}
+
+	.tascc-promos{
+		padding:20px;
+	}
+}
+
 
 
 /** HEADER **/
@@ -109,8 +148,24 @@ p.caption{
 		font-size:20px;
 	}
 
+	.small-nav ul.nav {
+	    display: block;
+	    float: none;
+	}
+
+	.small-nav button.navbar-toggler,
+	.small-nav #navbarToggleExternalContent {
+	    width:100%;
+	}
+
 	header .navbar{
 		text-align: center;
+	}
+
+	.sticky {
+    	position: -webkit-sticky;
+    	position: sticky;
+    	top: 0;
 	}
 
 	header button.navbar-toggler {
@@ -125,6 +180,11 @@ p.caption{
 	.header-img {
 	    position:relative;
 	    text-align:center;
+	}
+
+	.header-img,
+	.header-img img.header-bg {
+	    min-height:150px;
 	}
 
 	.header-logo{
@@ -142,6 +202,8 @@ p.caption{
 	    max-width: 784px;
 	    margin: 0px auto;
 	}
+
+
 
 	.header-logo img{
 		display:block;
@@ -185,6 +247,27 @@ p.caption{
 	    font-size:45px;
 	    font-weight:bold;
 	    text-shadow:2px 0px 4px #333
+
+	}
+
+	@media(max-width: 991px){
+		.featured-image-header .feature-title{
+			font-size:35px;
+		}
+
+	}
+
+	@media(max-width: 768px){
+		.header-logo{
+			background-image: url('images/header-logo-sm.png?3');
+			left:5%;
+			right:5%;
+		}
+		.featured-image-header .feature-title{
+			font-size:25px;
+			line-height:110%;
+		}
+		
 	}
 
 

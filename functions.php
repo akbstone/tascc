@@ -1,6 +1,6 @@
 <?php 
 require_once('wp-bootstrap-navwalker.php');
-define('TASCC_USE_CDN',false);
+define('TASCC_USE_CDN',true);
 
 add_action( 'init', 'tascc_init' );
 if(!function_exists('tascc_init')){
@@ -154,6 +154,7 @@ if(!function_exists('tascc_enqueue_styles')){
     function tascc_enqueue_styles() {
         $bootstrap_style = 'bootstrap-style';
         $editor_styles = 'editor_styles';
+       
         $font = 'google-font';
 
 
@@ -165,6 +166,8 @@ if(!function_exists('tascc_enqueue_styles')){
             wp_enqueue_style( $google_font,get_stylesheet_directory_uri() . '/fonts/OpenSans/OpenSans.css',null,null);
             wp_enqueue_style( $bootstrap_style, get_stylesheet_directory_uri() . '/bootstrap/bootstrap.min.css', null, null);
         }
+
+       
 
          wp_enqueue_style( $editor_styles, get_stylesheet_directory_uri() . '/editor-style-shared.css',null,null);
 
@@ -183,7 +186,8 @@ if(!function_exists('tascc_enqueue_my_scripts')){
     function tascc_enqueue_my_scripts() {
 
     	$popper_script = 'popper-script';
-        $bootstrap_script = 'bootstrap=script';
+        $bootstrap_script = 'bootstrap-script';
+        $sticky_fill = 'sticky_fill';
 
         if(TASCC_USE_CDN){
         	wp_enqueue_script($popper_script,'//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js');
@@ -192,6 +196,8 @@ if(!function_exists('tascc_enqueue_my_scripts')){
             wp_enqueue_script($popper_script, get_stylesheet_directory_uri() . '/bootstrap/popper.min.js');
             wp_enqueue_script($bootstrap_script, get_stylesheet_directory_uri() . '/bootstrap/bootstrap.min.js', array('jquery', $popper_script), true);
         }
+
+         wp_enqueue_script($sticky_fill,get_stylesheet_directory_uri() . '/scripts/stickyfill.min.js',array('jquery'),null);
     }
 }
 

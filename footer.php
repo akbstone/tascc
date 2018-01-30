@@ -72,6 +72,10 @@
 		</footer><!-- #colophon -->
 	</div><!-- .site-content-contain -->
 </div><!-- #page -->
+<script type="text/javascript">
+	var elements = document.querySelectorAll('.sticky');
+	Stickyfill.add(elements);
+</script>
 <?php wp_footer(); ?>
 
 </body>
