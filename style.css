@@ -25,6 +25,7 @@
 
 a,
 .nav a.active,
+.nav .current-menu-parent > a,
 .nav a:hover{
 	color:#28abe2;
 }
@@ -309,7 +310,12 @@ p.caption{
 		.logged-in .is-sticky .sticky{
 			padding-top:46px;	
 		}
-		
+	}
+
+	@media screen and (max-width: 600px){
+		.logged-in .is-sticky .sticky{
+			padding-top:0px;	
+		}
 	}
 
 	.is-sticky .main-menu{
