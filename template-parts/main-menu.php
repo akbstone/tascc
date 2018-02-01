@@ -22,7 +22,7 @@
 			
 
 
-			<div class="small-nav navbar navbar-light d-md-none d-lg-none d-xl-none">
+			<div class="small-nav main-menu navbar navbar-light d-md-none d-lg-none d-xl-none">
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
 		      		<span class="navbar-toggler-icon"></span>
 		    	</button>

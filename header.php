@@ -23,11 +23,7 @@
 </head>
 
 <body <?php body_class(); ?>>
-<div id="page" class="page-container">
 
-
-
-	<header id="masthead" class="site-header" role="banner">
 
 		<div class="header-img">
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
@@ -41,6 +37,14 @@
 		<?php if ( has_nav_menu( 'main' ) ) : ?>
 			<?php get_template_part( 'template-parts/main-menu', 'main' ); ?>
 		<?php endif; ?>
+
+<div id="page" class="page-container">
+
+
+
+	<header id="masthead" class="site-header" role="banner">
+
+
 
 	</header><!-- #masthead -->
 

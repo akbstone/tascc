@@ -197,7 +197,9 @@ if(!function_exists('tascc_enqueue_my_scripts')){
             wp_enqueue_script($bootstrap_script, get_stylesheet_directory_uri() . '/bootstrap/bootstrap.min.js', array('jquery', $popper_script), true);
         }
 
-         wp_enqueue_script($sticky_fill,get_stylesheet_directory_uri() . '/scripts/stickyfill.min.js',array('jquery'),null);
+        wp_enqueue_script($sticky_fill,'https://cdnjs.cloudflare.com/ajax/libs/jquery.sticky/1.0.4/jquery.sticky.min.js',array('jquery'),true);
+
+        //wp_enqueue_script($sticky_fill,get_stylesheet_directory_uri() . '/scripts/stickyfill.min.js',array('jquery'),null);
     }
 }
 

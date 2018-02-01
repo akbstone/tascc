@@ -24,7 +24,8 @@
 }
 
 a,
-.nav a.active{
+.nav a.active,
+.nav a:hover{
 	color:#28abe2;
 }
 
@@ -140,13 +141,13 @@ p.caption{
 
 /** HEADER **/
 
-	.main-menu{
-		padding:20px;
-	}
+
 
 	.main-menu li a{
 		font-size:20px;
 	}
+
+	
 
 	.small-nav ul.nav {
 	    display: block;
@@ -158,22 +159,26 @@ p.caption{
 	    width:100%;
 	}
 
-	header .navbar{
+	.main-menu .navbar{
 		text-align: center;
 	}
 
-	.sticky {
-    	position: -webkit-sticky;
-    	position: sticky;
-    	top: 0;
-	}
+	/*.sticky {
+	  position: -webkit-sticky;
+	  position: sticky;
+	  top: 0;
+	}*/
 
-	header button.navbar-toggler {
+	.main-menu button.navbar-toggler {
 	    margin:0px auto;
 	    border:none;
 	}
 
-	header button.navbar-toggler:after{
+	.main-menu button.navbar-toggler:focus{
+		outline:none;
+	}
+
+	.main-menu button.navbar-toggler:after{
 	    content:'Menu'
 	}
 
@@ -215,6 +220,7 @@ p.caption{
 	.featured-image-header {
 	    position:relative;
 	    overflow:hidden;
+	    z-index:4;
 	}
 
 	.featured-image-header img{
@@ -230,8 +236,90 @@ p.caption{
 		left:-40px;
 		right:-40px;
 		bottom:-40px;
-		box-shadow:inset 0px 0px 40px #333;
-		z-index:1000;
+		z-index:5;
+	}
+
+	.main-menu{
+		box-shadow:0px 0px 40px #333;
+		z-index:10;
+		padding:20px;
+		position:relative;
+		background:#FFF;
+	}
+
+	@media(min-width:767px){
+		#menu-main-menu ul{
+		  display:none;
+		  position: absolute;
+		  top: 38px;
+
+		  right: 0;
+		  right: left;
+		  min-width: 280px;
+		  max-width:300px;
+		  z-index: 99999;
+		  list-style-type: none;
+		  background:#FFF;
+		  padding:5px;
+		  border:none;
+		}
+
+		#menu-main-menu > li:hover > ul {
+	  		display: block;
+		}
+
+		#menu-main-menu > li:hover > ul li{
+			line-height:1.2em;
+		}
+	}
+
+	@media(max-width:768px){
+
+		.small-nav .nav > li ul.dropdown-menu{
+			display:block;
+			font-size:14px;
+			position:static;
+			float:none;
+			margin:0px;
+			padding: 0px 10px;
+			border-width:0px;
+		}
+
+		.small-nav .nav > li ul.dropdown-menu li a{
+			font-size:16px;
+			line-height:normal;
+		}
+
+
+	}
+
+	.small-nav.main-menu{
+		padding:15px;
+	}
+
+	.sticky {
+		background:#FFF;
+		z-index:10!important;
+	}
+	.logged-in .is-sticky .sticky{
+		padding-top:32px;
+	}
+
+	@media screen and (max-width: 782px){
+		.logged-in .is-sticky .sticky{
+			padding-top:46px;	
+		}
+		
+	}
+
+	.is-sticky .main-menu{
+		background:#FFF url('images/header-logo-mini.png') 10px 15px no-repeat;
+	}
+
+	@media (max-width:768px){
+		.is-sticky .main-menu{
+			background:#FFF url('images/header-logo-xs.png') 10px 10px no-repeat;
+		}
 	}
 
 
