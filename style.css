@@ -249,20 +249,21 @@ p.caption{
 	}
 
 	@media(min-width:767px){
-		#menu-main-menu ul{
-		  display:none;
-		  position: absolute;
-		  top: 38px;
-
-		  right: 0;
-		  right: left;
-		  min-width: 280px;
-		  max-width:300px;
-		  z-index: 99999;
-		  list-style-type: none;
-		  background:#FFF;
-		  padding:5px;
-		  border:none;
+		#menu-main-menu ul {
+		    display: none;
+		    position: absolute;
+		    top: 38px;
+		    right: 0;
+		    right: left;
+		    min-width: 280px;
+		    max-width: 300px;
+		    z-index: 99999;
+		    list-style-type: none;
+		    background: #FFF;
+		    padding: 0px;
+		    padding-top:10px;
+		    border: none;
+		    margin: 0px;
 		}
 
 		#menu-main-menu > li:hover > ul {
@@ -271,6 +272,11 @@ p.caption{
 
 		#menu-main-menu > li:hover > ul li{
 			line-height:1.2em;
+			border-bottom:1px solid #6e757b;
+		}
+
+		#menu-main-menu > li:hover > ul li:last-child{
+			border-bottom-width:0px;
 		}
 	}
 
