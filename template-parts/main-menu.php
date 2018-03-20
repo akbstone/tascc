@@ -10,7 +10,7 @@
 
 
 		<div class="sticky clearfix">
-			<div class="large-nav main-menu d-none d-md-block d-lg-block d-xl-block">
+			<div class="large-nav main-menu">
 				<?php wp_nav_menu( array(
 					'container'		 => false,
 					'theme_location' => 'main',
@@ -22,7 +22,7 @@
 			
 
 
-			<div class="small-nav main-menu navbar navbar-light d-md-none d-lg-none d-xl-none">
+			<div class="small-nav main-menu navbar navbar-light">
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
 		      		<span class="navbar-toggler-icon"></span>
 		    	</button>

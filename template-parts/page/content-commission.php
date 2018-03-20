@@ -26,16 +26,16 @@
 	?>
 
 	<header class="entry-header">
-
+		<h1>
 		<?php
 			$cats = get_the_category();
 			if(!empty($cats)){
 				foreach($cats as $key=>$cat){
-					echo '<div class="commission-region"><a href="' . get_term_link($cat) . '">'. $cat->name . '</a></div>';
+					echo '<span class="commission-region"><!--<a href="' . get_term_link($cat) . '">-->'. $cat->name . '<!--</a>--></span><br />';
 				}
 			}
 		?>
-		<h1><?php the_title(); ?>
+		<?php the_title(); ?>
 		<?php 
 			$position = get_post_custom_values('commission-member-position');
 			if(!empty($position)){

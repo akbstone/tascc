@@ -2,3 +2,8 @@
 
 /* Here you can override any CSS which causes layout or visibility problems in the editor, */
 /* and duplicate any Theme-CSS to make the editor display look more like the real frontend */
+
+
+#mceu_124-text.mce-text{
+	color:#6cbd45;
+}

@@ -41,7 +41,7 @@
 
 		</div><!-- #content -->
 
-		<footer id="colophon" class="site-footer highlight-bg-2" role="contentinfo">
+		<footer id="colophon" class="site-footer highlight-bg-3" role="contentinfo">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-4 logo-block footer-block">

@@ -1,10 +1,23 @@
 <?php 
 require_once('wp-bootstrap-navwalker.php');
 define('TASCC_USE_CDN',true);
+define('TASCC_EXCERPT_LENGTH',28);
+
+function tascc_custom_excerpt_length( $length ) {
+    return TASCC_EXCERPT_LENGTH;
+}
+add_filter( 'excerpt_length', 'tascc_custom_excerpt_length', 999 );
 
 add_action( 'init', 'tascc_init' );
 if(!function_exists('tascc_init')){
     function tascc_init(){
+
+        global $wp_styles;
+        $wp_styles->default_version = max(array(
+            filemtime(get_stylesheet_directory() . '/style.css'),
+            filemtime(get_stylesheet_directory() . '/editor-style-shared.css'),
+            filemtime(get_stylesheet_directory() . '/editor-style.css')
+        ));
         
         //EVENTS POST TYPE
         register_post_type( 'events',
@@ -153,7 +166,7 @@ add_action( 'wp_enqueue_scripts', 'tascc_enqueue_styles' );
 if(!function_exists('tascc_enqueue_styles')){
     function tascc_enqueue_styles() {
         $bootstrap_style = 'bootstrap-style';
-        $editor_styles = 'editor_styles';
+        $mce_editor_styles = 'mce_css';
        
         $font = 'google-font';
 
@@ -167,18 +180,20 @@ if(!function_exists('tascc_enqueue_styles')){
             wp_enqueue_style( $bootstrap_style, get_stylesheet_directory_uri() . '/bootstrap/bootstrap.min.css', null, null);
         }
 
-       
+        wp_enqueue_style( $mce_editor_styles, get_stylesheet_directory_uri() . '/editor-style-shared.css');
 
-         wp_enqueue_style( $editor_styles, get_stylesheet_directory_uri() . '/editor-style-shared.css',null,null);
 
         wp_enqueue_style( 'tascc-style',
             get_stylesheet_directory_uri() . '/style.css',
-            array($google_font, $bootstrap_style,$editor_styles),
+            array($google_font, $bootstrap_style,$mce_editor_styles),
             filemtime(get_stylesheet_directory() . '/style.css')
         );
 
+
+
     }
 }
+
 
 
 add_action('wp_enqueue_scripts', 'tascc_enqueue_my_scripts');
@@ -242,7 +257,7 @@ if(!function_exists('get_tascc_commission_list')){
             $cats_out = array();
             if(!empty($cats)){
                 foreach($cats as $key=>$cat){
-                    array_push($cats_out,'<div class="commission-region"><a href="' . get_term_link($cat) . '">'. $cat->name . '</a></div>');
+                    array_push($cats_out,'<div class="commission-region"><!--<a href="' . get_term_link($cat) . '">-->'. $cat->name . '<!--</a>--></div>');
                 }
             }
 
@@ -287,6 +302,56 @@ if(!function_exists('tascc_custom_header_title')){
     }
 }
 
+add_shortcode('tascc-news','get_tascc_posts');
+if(!function_exists('get_tascc_posts')){
+    function get_tascc_posts($attr){
+        $atts = shortcode_atts(array(
+            'category'=>FALSE
+        ),$attr);
+
+        $out = array();
+        $posts = get_posts();
+        foreach($posts as $k=>$p){
+
+            $c = array();
+            $url = get_permalink($p->ID);
+            $title = $p->post_title;
+            $exc = !empty($p->post_excerpt) ? $p->post_excerpt : wp_trim_words($p->post_content);
+
+            $thumb = get_the_post_thumbnail($p->ID,'thumb',array( 'class'  => 'mw-100 float-left' ));
+            
+
+
+            if(!empty($title)){
+                 array_push($c,'<p class="news-date">' . date('M j Y',strtotime($p->post_date)) . '</p>');
+                 array_push($c,'<h2><a href="'. $url .'">' . $title . '</a></h2>');
+            }
+
+            if(!empty($thumb)){
+                array_push($c,'<a href="'. $url .'">' . $thumb . '</a>');
+            }
+
+            if(!empty($exc)){
+                array_push($c,$exc);
+            }
+
+                        
+
+            if(!empty($c)){
+                array_push($out,implode($c,"\n"));
+            }
+        }
+
+        $content = '';
+
+        if(!empty($out)){
+            $content = '<div class="tascc-news"><div class="tascc-news-item clearfix">' . join('</div><div class="tascc-news-item clearfix">',$out) . '</div></div>';
+        }
+
+        return $content;
+    }
+}
+
 add_shortcode('tascc-promos','get_tascc_promos');
 if(!function_exists('get_tascc_promos')){
     function get_tascc_promos($attr){
@@ -298,7 +363,7 @@ if(!function_exists('get_tascc_promos')){
         $out = array();
         foreach($pages as $page_id){
             $p = get_post($page_id);
-            $exc = !empty($p->post_excerpt) ? $p->post_excerpt : wp_trim_words($p->post_content);
+            $exc = !empty($p->post_excerpt) ? $p->post_excerpt : wp_trim_words($p->post_content,TASCC_EXCERPT_LENGTH);
             $thumb = get_the_post_thumbnail($p->ID,'large',array( 'class'  => 'mw-100' ));
             $url = get_permalink($p->ID);
 

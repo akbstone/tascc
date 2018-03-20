@@ -27,7 +27,7 @@
 
 		<div class="header-img">
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-				<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/header-bg.jpg" class="header-bg mw-100" />
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/header-bg.jpg?v=2" class="header-bg mw-100" />
 				<div class="header-logo">
 					<!-- <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/header-logo.png" /> -->
 				</div>

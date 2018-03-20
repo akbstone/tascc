@@ -47,7 +47,7 @@ h1{
 
 p,
 ul li{
-	font-size:24px;
+	font-size:20px;
 	line-height:1.5em;
 	color:rgba(111,118,123,1);
 }
@@ -57,7 +57,7 @@ p{
 }
 
 h1,h2,h3{
-	margin-bottom:30px;
+	margin-bottom:15px;
 	color:#000;
 }
 
@@ -71,14 +71,20 @@ h1,h2,h3{
 
 h2{
 	font-size:28px;
+	color:#6cbd45;
 }
 
 h3{
-	font-size:20px;
+	font-size:22px;
 }
 
-h3{
+h4{
+	font-size:18px;
+}
+
+h5{
 	font-size:16px;
+	color:#6cbd45;
 }
 
 .highlight-bg-1{
@@ -86,7 +92,11 @@ h3{
 }
 
 .highlight-bg-2{
-	background:#28abe2;
+	background:#e5ebea;
+}
+
+.highlight-bg-3{
+	background:#00afed;
 }
 
 .highlight-bg-1:after,
@@ -129,9 +139,9 @@ h3{
 }
 
 .highlight-bg-1,
-.highlight-bg-2,
 .highlight-bg-1 *,
-.highlight-bg-2 *{
+.highlight-bg-3,
+.highlight-bg-3 *{
 	color:#FFF;
 }
 
