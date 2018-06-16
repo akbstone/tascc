@@ -82,9 +82,16 @@ h4{
 	font-size:18px;
 }
 
-h5{
+h5,
+p.wp-caption-text{
 	font-size:16px;
 	color:#6cbd45;
+}
+
+p.wp-caption-text{
+	margin:0px;
+	padding-top:5px;
+	padding-bottom: 5px;
 }
 
 .highlight-bg-1{

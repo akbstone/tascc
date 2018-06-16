@@ -48,7 +48,9 @@
 						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
 							<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/footer-logo.png" class="footer-logo mw-100" />
 						</a>
-						&copy; <?php echo date('Y'); ?>
+
+						<p>&copy; <?php echo date('Y'); ?></p>
+
 					</div>
 					<div class="col-lg-4 contact-block footer-block">
 						<h4>Contact</h4>
@@ -58,7 +60,9 @@
 							Phone: 907-286-2377 or<br />
 							Toll Free: 800.474.4362 (Alaska only)<br />
 							Fax: 888.409.0477<br />
-							<a href="mailt:tassc.wm@seaotter-sealion.org">tassc.wm@seaotter-sealion.org</a>
+							<!--a href="mailt:tassc.wm AT seaotter-sealion.org">tassc.wm@seaotter-sealion.org</a -->
+							<a href="/contact-us">Contact us</a><br />
+							<a href=" https://www.facebook.com/The-Alaska-Sea-Otter-and-Steller-Sea-Lion-Commission-127492514005713/" target="_blank"><img src="<?php  echo get_stylesheet_directory_uri();?>/images/facebook_icon.png" /></a>
 						</p>
 					</div>
 					<div class="col-lg-4 mission-block footer-block">

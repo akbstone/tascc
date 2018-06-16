@@ -37,6 +37,18 @@ get_header(); ?>
 
 <div class="wrap">
 	<div id="primary" class="content-area">
+
+
+	<?php if (is_home() || is_archive()) : ?>
+
+
+				<div class="news-sidebar clearfix">
+					<?php dynamic_sidebar( 'news-sidebar' ); ?>
+				</div>
+				<h1>News<?php if(is_archive()): ?>: <?php echo str_replace('Year: ','',str_replace('Month: ','',get_the_archive_title())); ?><?php endif; ?></h1>
+
+	<?php endif;?>
+
 		<main id="main" class="site-main" role="main">
 
 			<?php

@@ -8,6 +8,12 @@ function tascc_custom_excerpt_length( $length ) {
 }
 add_filter( 'excerpt_length', 'tascc_custom_excerpt_length', 999 );
 
+function new_excerpt_more($more) {
+   global $post;
+   return '… <a href="'. get_permalink($post->ID) . '" class="read-more small">' . 'READ MORE' . '</a>';
+}
+add_filter('excerpt_more', 'new_excerpt_more');
+
 add_action( 'init', 'tascc_init' );
 if(!function_exists('tascc_init')){
     function tascc_init(){
@@ -173,7 +179,7 @@ if(!function_exists('tascc_enqueue_styles')){
 
 
         if(TASCC_USE_CDN){
-            wp_enqueue_style( $google_font,'//fonts.googleapis.com/css?family=Open+Sans',null,null);
+            wp_enqueue_style( $google_font,'//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i',null,null);
             wp_enqueue_style( $bootstrap_style, '//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css',null,null);
         }else{
             wp_enqueue_style( $google_font,get_stylesheet_directory_uri() . '/fonts/OpenSans/OpenSans.css',null,null);
@@ -239,7 +245,8 @@ add_shortcode('tascc-commission-list','get_tascc_commission_list');
 if(!function_exists('get_tascc_commission_list')){
     function get_tascc_commission_list($attr){
         $args = array(
-          'post_type'   => 'commission'
+          'post_type'   => 'commission',
+		  'posts_per_page' => 500
         );
         
         $out = array();
@@ -264,7 +271,9 @@ if(!function_exists('get_tascc_commission_list')){
             $thumb = get_the_post_thumbnail($p->ID,'large',array( 'class'  => 'mw-100' ));
             if(!empty($thumb)){
                 array_push($c,'<a href="'. $url .'">' . $thumb . '</a>');
-            }
+            }else{
+				array_push($c,'<a href="'. $url .'"><div style="width:195px;height:260px;background:#ccc"></div></a>');
+			}
             if(!empty($title)){
                  array_push($c,'<div class="commission-title"><a href="'. $url .'">' . $title . '</a></div>');
             }
@@ -290,6 +299,19 @@ if(!function_exists('get_tascc_commission_list')){
     }
 }
 
+if ( function_exists('register_sidebar') )
+  register_sidebar(array(
+    'name' => 'news-sidebar',
+    'before_widget' => '<div class = "news-widget">',
+    'after_widget' => '</div>',
+    'before_title' => '<h3>',
+    'after_title' => '</h3>',
+  )
+);
+
+add_theme_support( 'title-tag' );
+
+
 
 if(!function_exists('tascc_custom_header_title')){
     function tascc_custom_header_title() {
@@ -306,7 +328,8 @@ add_shortcode('tascc-news','get_tascc_posts');
 if(!function_exists('get_tascc_posts')){
     function get_tascc_posts($attr){
         $atts = shortcode_atts(array(
-            'category'=>FALSE
+            'category'=>FALSE,
+			'posts_per_page'=>100
         ),$attr);
 
         $out = array();
@@ -332,8 +355,9 @@ if(!function_exists('get_tascc_posts')){
             }
 
             if(!empty($exc)){
-                array_push($c,$exc);
-            }
+                //array_push($c,apply_filters('the_content', $p->post_content));
+				array_push($c,apply_filters('the_content', $exc));
+			}
 
                         
 

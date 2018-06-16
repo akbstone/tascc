@@ -3,4 +3,7 @@
 <file name="popper.min.js" server="199.195.122.131//tascc.bstoneweb.com/" local="131596821654373387" remote="131614254600000000" Dst="1" />
 <file name="bootstrap.min.js" server="199.195.122.131//tascc.bstoneweb.com/" local="131596821792533416" remote="131614254600000000" Dst="1" />
 <file name="bootstrap.min.css" server="199.195.122.131//tascc.bstoneweb.com/" local="131596821441493344" remote="131614254600000000" Dst="1" />
+<file name="bootstrap.min.css" server="01ecda6.netsolhost.com//htdocs/" local="131596821441493344" remote="131730858130000000" Dst="2" />
+<file name="bootstrap.min.js" server="01ecda6.netsolhost.com//htdocs/" local="131596821792533416" remote="131730858140000000" Dst="2" />
+<file name="popper.min.js" server="01ecda6.netsolhost.com//htdocs/" local="131596821654373387" remote="131730858150000000" Dst="2" />
 </dwsync>

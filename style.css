@@ -91,7 +91,43 @@ p.caption{
 .tascc-promos .promo .inner{
 	background:#FFF;
 	padding:20px;
+} 
+
+.tascc-news-item {
+    padding:20px 0px;
+    clear:both;
 }
+
+.tascc-news-item h2{
+	margin-top:0px;
+	margin-bottom:0px;
+}
+
+.tascc-news-item p.news-date{
+	font-size:14px;
+	margin:0px;
+}
+
+.tascc-news-item img{
+    margin-right:20px;
+    margin-bottom:30px;
+}
+
+
+.news-sidebar{
+    padding:5px 10px;
+    float:right;
+}
+
+.news-sidebar .news-widget{
+
+}
+
+.news-sidebar .news-widget h3{
+
+    display:none;
+}
+
 
 
 .content-area{
@@ -158,6 +194,11 @@ p.caption{
 	.small-nav button.navbar-toggler,
 	.small-nav #navbarToggleExternalContent {
 	    width:100%;
+	}
+
+	.small-nav div#navbarToggleExternalContent {
+		max-height: 300px;
+		overflow: auto;
 	}
 
 	.main-menu .navbar{
@@ -280,25 +321,7 @@ p.caption{
 		}
 	}
 
-	@media(max-width:768px){
-
-		.small-nav .nav > li ul.dropdown-menu{
-			display:block;
-			font-size:14px;
-			position:static;
-			float:none;
-			margin:0px;
-			padding: 0px 10px;
-			border-width:0px;
-		}
-
-		.small-nav .nav > li ul.dropdown-menu li a{
-			font-size:16px;
-			line-height:normal;
-		}
-
-
-	}
+	
 
 	.small-nav.main-menu{
 		padding:15px;
@@ -325,15 +348,44 @@ p.caption{
 	}
 
 	.is-sticky .main-menu{
-		background:#FFF url('images/header-logo-mini.png') 10px 15px no-repeat;
+		background:#FFF url('images/header-logo-xs-bl.png?v=2') 15px 20px no-repeat;
 	}
 
-	@media (max-width:768px){
+
+	@media (max-width:1200px){
+		.main-menu.small-nav{
+			display:block;
+		}
 		.is-sticky .main-menu{
-			background:#FFF url('images/header-logo-xs.png') 10px 10px no-repeat;
+			background:#FFF url('images/header-logo-xs-bl.png?v=2') 10px 10px no-repeat;
+		}
+		.small-nav .nav > li ul.dropdown-menu{
+			display:block;
+			font-size:14px;
+			position:static;
+			float:none;
+			margin:0px;
+			padding: 0px 10px;
+			border-width:0px;
+		}
+
+		.small-nav .nav > li ul.dropdown-menu li a{
+			font-size:16px;
+			line-height:normal;
+		}
+		.main-menu.large-nav{
+			display:none;
 		}
 	}
 
+	@media (min-width:1201px){
+		.main-menu.small-nav{
+			display:none;
+		}
+		.main-menu.large-nav{
+			display:block;
+		}
+	}
 
 
 	.featured-image-header .feature-title{
@@ -434,15 +486,25 @@ p.caption{
 	}
 
 	.commission-content h1 em{
+		color:#000;
+	}
+
+	.commission-content h1 em,
+	.commission-content h1 span.commission-region{
 	    font-weight:normal;
-	    color:#000;
+	    
 	    font-size:24px;
 	}
 
+	.commission-content img{
+		margin-bottom:10px;
+	}
+
+	.commission-content .commission-region,
 	.commission-content .commission-region a{
 	    color:#6cbd45;
-	    font-weight:bold;
-	    font-size:18px;
+	    font-weight:500;
+	    
 	}
 
 	.tascc-commission-list .commission-content{
@@ -450,8 +512,6 @@ p.caption{
 	    float:left;
 	    margin:40px;
 	}
-
-
 
 
 	.tascc-commission-list .commission-content .commission-title a{
